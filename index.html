@@ -1,0 +1,174 @@
+<html>
+  <head>
+  <title>おりびやPICKUPガチャ</title>
+  </head>
+  <BODY bgcolor="#FCCEE4">
+　<HR align="center">
+　<CENTER><B><FONT color="#FD469E" size="+3">
+　おりびやPICKUPガチャ
+　</FONT></B></CENTER>
+　<HR align="center">
+   <br>
+
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<title>おりびやPICKUPガチャ</title>
+
+<script>
+
+function getImage(){
+  //画像ファイル名を配列で保持
+  var arr = [
+      '0.png',
+      '1.png',
+      '2.png',
+      '3.png',
+      '4.png',
+      '5.png',
+      '6.png',
+      '7.png',
+      '8.png',
+      '9.png',
+      '10.png',
+      '11.png',
+      '12.png',
+      '13.png',
+      '14.png',
+      '15.png',
+      '16.png',
+      '17.png',
+      '18.png',
+      '19.png',
+      '20.png',
+      '21.png',
+      '22.png',
+      '23.png',
+      '24.png',
+      '25.png',
+      '26.png',
+      '27.png',
+      '28.png',
+      '29.png',
+      '30.png',
+      '31.png',
+      '32.png',
+      '33.png',
+      '34.png',
+      '35.png',
+      '36.png',
+      '37.png',
+      '38.png',
+      '39.png',
+      '40.png',
+      '41.png',
+      '42.png',
+      '43.png',
+      '44.png',
+      '45.png',
+      '46.png',
+      '47.png',
+      '48.png',
+      '49.png',
+      '50.png',
+      '51.png',
+      '52.png',
+      '53.png',
+      '54.png'
+      ];
+ 
+  //ランダムで画像ファイルを取得して表示する
+  var obj = document.getElementById("im1");
+  var a = Math.floor(Math.random() * arr.length);
+  obj.src = arr[a];
+}
+</script>
+</head>
+<body>
+
+
+   <center>
+  <br>
+  <img id="im1" alt="">
+  <br>
+  <br>
+
+  <input type="button" value="1回まわす" onclick="getImage()"
+  style="WIDTH: 200px; HEIGHT: 70px">
+
+<br>
+<FONT color="#000000" size="+1">
+ ※更新で結果リセット
+　</FONT>
+</center>
+<br>
+<br>
+<br>
+
+
+
+
+    <div id="img_div">
+    </div>
+
+    <!-- scriptタグが読み込まれる前に指定するdivが読み込まれている必要があるので、
+      scriptタグは最後に置いた。
+      これが一番良いのかはわからない -->
+    <script>
+      // 選ぶ画像の数 画像追加したらimagesのあとを変える
+      let number_of_tags = 10;
+      let number_of_images = 54;
+       // 最初に空のimgタグを作っておく
+      function createImageTag(tag_number, parent_tag_id) {
+        for(let i = 0; i < tag_number; i++){
+          let img_tag = document.createElement("img");
+          // idはimg0, img1, img2～　となる
+          img_tag.setAttribute("id", "img" + String(i));
+          let parent_tag = document.getElementById(parent_tag_id);
+          document.body.appendChild(img_tag);
+        }
+      }
+      // 第一引数→作る数、第二引数→作ったものを親要素にするタグ
+      createImageTag(number_of_tags, "img_div");
+      // 0.png, 1.png～というように画像の名前は数字に設定しておく
+      function choosingImage(tag_number,images_number){
+        // ランダムな数字を格納する配列
+        let chosen_numbers = [];
+        for(let i = 0; i < images_number; i++){
+          // ランダムな数字を配列に入れる
+          let random_number = Math.floor(Math.random()*images_number);
+          chosen_numbers.push(random_number);
+        }
+       console.log(chosen_numbers);
+        for(let i = 0; i < tag_number; i++){
+          // 配列の数字を参照し、その番号の画像を表示
+
+          // idを取り出す（idは連番）
+          let img_tag = document.getElementById("img" + String(i));
+          // 配列を参照
+          img_tag.setAttribute("src", String(chosen_numbers[i]) + ".png");
+        }
+      }
+      // ボタンを押すと呼ばれる関数
+      function drawing() {
+        choosingImage(number_of_tags, number_of_images);
+      }
+     
+    </script>
+<br>
+<br>
+<center>
+<input type="button" value="10回まわす" onClick="drawing()" style="WIDTH: 200px; HEIGHT: 70px">
+
+<br>
+<FONT color="#000000" size="+1">
+※更新で結果リセット
+　</FONT>
+</center>
+
+<br>
+<br>
+</body>
+</html>
